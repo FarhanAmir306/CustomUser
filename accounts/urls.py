@@ -6,9 +6,12 @@ from accounts  import views
 # Create a router and register our ViewSets with it.
 router = DefaultRouter()
 
-router.register('user', views.UserViewSet,basename='custom_user')
 
-# The API URLs are now determined automatically by the router.
+# router.register('', views.UserViewSet,basename='custom_user')
+
 urlpatterns = [
     path('', include(router.urls)),
+    path('login/',views.LoginView.as_view(),name='login'),
+    path('register/',views.RegisterView.as_view(),name='register'),
+    path('logout/',views.UserLogoutViewSet.as_view(),name='logout'),
 ]
